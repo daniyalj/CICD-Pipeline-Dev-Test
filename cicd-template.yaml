@@ -61,7 +61,7 @@ objects:
              def mvnCmd = "mvn -s configuration/cicd-settings.xml"
 
              stage 'Build'
-             git branch: 'eap-7', url: 'https://github.com/daniyalj/CICD-Pipeline-Dev-Test'
+             git branch: 'master', url: 'https://github.com/daniyalj/CICD-Pipeline-Dev-Test.git'
              def v = version()
              sh "${mvnCmd} clean install -DskipTests=true"
 

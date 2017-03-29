@@ -97,8 +97,7 @@ objects:
              sh "oc project ${DEV_PROJECT}"
              sh "oc delete bc,dc,svc,route -l app=tasks -n ${DEV_PROJECT}"
              // create build. override the exit code since it complains about exising imagestream
-             sh "oc new-app --template=eap64-basic-s2i -p APPLICATION_NAME=myapp -p SOURCE_REPOSITORY_URL=https://github.com/VeerMuchandi/kitchensink.git -p SOURCE_REPOSITORY_REF="" -p CONTEXT_DIR="" -l name=myapp"
-            // sh "oc new-build --name=tasks --image-stream=jboss-eap70-openshift --binary=true --labels=app=tasks -n ${DEV_PROJECT} || true"
+             sh "oc new-build --name=tasks --image-stream=jboss-eap70-openshift --binary=true --labels=app=tasks -n ${DEV_PROJECT} || true"
              // build image
              sh "oc start-build tasks --from-dir=oc-build --wait=true -n ${DEV_PROJECT}"
              // deploy image
